@@ -1,0 +1,17 @@
+Write a program to sort a list of numbers in ascending order.
+
+The list is a single linked list.
+
+You cannot use any library to implement this.
+
+In order to sort it, do not swap the values in the nodes - BUT swap the nodes themselves.
+
+The linked list must have at least 15 numbers - initially not sorted.
+
+Submit the code.
+
+Submit screen shots of the following runs
+
+1. Travers the linked list before it is sorted.
+
+2. Sort it. and traverse the linked list after the sort.
