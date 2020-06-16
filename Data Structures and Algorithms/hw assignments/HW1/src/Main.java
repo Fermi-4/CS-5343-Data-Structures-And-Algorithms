@@ -27,7 +27,7 @@ public class Main {
 	 * 1) Generate a random unsorted linkedlist of size SIZE with data between 0 and UPPER_BOUND
 	 * 2) Print List 
 	 * 3) Sort List 
-	 * g4) Print Sorted List
+	 * 4) Print Sorted List
 	 */
 	public static void main(String[] args) {
 		Node head = getList();
