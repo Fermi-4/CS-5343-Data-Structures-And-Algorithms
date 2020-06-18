@@ -21,20 +21,32 @@ import java.util.Queue;
 public class Main {
 
 	static int[] numbers = { 40, 60, 20, 80, 50, 10, 30, 15, 5, 35, 25, 45, 55, 70, 90, 32, 33, 48, 46 };
-
+	static String mode = "predecessor";
+	
+	
 	public static void main(String[] args) {
+		
+		
 		BST bst = new BST();
 
 		for (int n : numbers) {
 			bst.insert(n);
 		}
+		
 		System.out.print("Inorder Traversal: ");
 		printInOrderTraversal(bst.getRoot());
+		
+		bst.delete(40, mode);
 		System.out.println("");
-//		printBFS(bst.getRoot());
-		String msg = bst.delete(40, "successor") ? "Successfully deleted..." : "Error deleting...";
-		System.out.println(msg);
+		System.out.print("Inorder Traversal: ");
 		printInOrderTraversal(bst.getRoot());
+		
+		
+		bst.delete(20, mode);
+		System.out.println("");
+		System.out.print("Inorder Traversal: ");
+		printInOrderTraversal(bst.getRoot());
+
 	}
 
 	static void printInOrderTraversal(Node node) {
@@ -44,7 +56,8 @@ public class Main {
 		System.out.print(node.toString() + " ");
 		printInOrderTraversal(node.getRight());
 	}
-
+	
+	// this does not work properly at the moment
 	static void printBFS(Node root) {
 		Queue<Node> queue = new LinkedList<Node>();
 		queue.add(root);
@@ -115,20 +128,47 @@ class BST {
 
 		if (mode == "successor") {
 			Node successor = getSuccessor(nd);
-			nd.getRight().setParent(successor);
-			nd.getLeft().setParent(successor);
+			
+			successor.getParent().setLeft(successor.getRight());
+			if(successor.getRight() != null) successor.getRight().setParent(successor.getParent());
+			
+			if(nd.getRight() != null) nd.getRight().setParent(successor);
+			if(nd.getLeft() != null) nd.getLeft().setParent(successor);
+			
 			successor.setRight(nd.getRight());
 			successor.setLeft(nd.getLeft());
-			successor.getParent().setLeft(successor.getRight());
-			System.out.println("successor: " + successor.toString());
+			successor.setParent(nd.getParent());
+			
+			if(nd.getParent() != null) {
+				if(nd == nd.getParent().getLeft())
+					nd.getParent().setLeft(successor);
+				else
+					nd.getParent().setRight(successor);
+			}
 			if(nd == root) root = successor;
 			return true;
 		} else if (mode == "predecessor") {
 			Node pred = getPredecessor(nd);
-			System.out.println("predecessor: " + pred.toString());
 			
+			pred.getParent().setRight(pred.getLeft());
+			if(pred.getLeft() != null) pred.getLeft().setParent(pred.getParent());
+			
+			if(nd.getRight() != null) nd.getRight().setParent(pred);
+			if(nd.getLeft() != null) nd.getLeft().setParent(pred);
+			
+			pred.setRight(nd.getRight());
+			pred.setLeft(nd.getLeft());
+			pred.setParent(nd.getParent());
+			
+			if(nd.getParent() != null) {
+				if(nd == nd.getParent().getLeft())
+					nd.getParent().setLeft(pred);
+				else
+					nd.getParent().setRight(pred);
+			}
 			if(nd == root) root = pred;
 			return true;
+			
 		} else {
 			return false;
 		}
