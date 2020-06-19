@@ -36,14 +36,15 @@ public class Main {
 		System.out.print("Inorder Traversal: ");
 		printInOrderTraversal(bst.getRoot());
 		
-		bst.delete(40, mode);
 		System.out.println("");
+		System.out.println("Deleting 40...");
+		bst.delete(40, mode);
 		System.out.print("Inorder Traversal: ");
 		printInOrderTraversal(bst.getRoot());
 		
-		
-		bst.delete(20, mode);
 		System.out.println("");
+		System.out.println("Deleting 20...");
+		bst.delete(20, mode);
 		System.out.print("Inorder Traversal: ");
 		printInOrderTraversal(bst.getRoot());
 

@@ -1,0 +1,111 @@
+Heap is a priority queue
+
+max heap - every child is greater than or equal to its children
+min heap - every child is less than or equal to its children
+
+insert always maintains completeness
+swap with parent (percolating up) until the tree is good
+
+how do I know where to insert to maintain completeness?
+typically not impl like a tree - usually an array impl of binary tree
+
+0 how many nodes
+1 - root
+n - BFS 
+
+if at any point I want to know the children: i*2=leftchild left+1 = rightchild
+
+parent = i / 2
+
+
+// Heaps are impl using arrays
+
+// TODO: insert
+
+insert(A, v)
+
+// delete
+percolate down
+delete(A) {
+	idx = A[0];
+	A[1] = A[idx];
+	A[0] -= 1;
+	A[idx] = -1;
+	idx = 1;
+	swap = true
+	while(swap) {
+		LCH = A[idx*2]
+		RCH = A[idx*2+1]
+		// percolate down		
+	}
+}
+
+
+// HEAP SORT
+Floyds Method
+given list of numbers create a heap
+get the last parent = total num of nodes / 2
+
+12 3 1 2 9 6 11 8 4 5 13 7 19
+
+Pi = A[0]/2
+LCH = 12
+
+Next parent is P = P-1
+Have to check children ater swapping
+
+while(P != o) {
+	PercolateDown(Pi)
+	P = P-1
+}
+
+
+// Look up the big Oh analysis of making a heap
+j*x^j = x / (1-x)^2
+
+
+
+
+
+// heap sort
+divide heap into 2 parts - sorted and unsorted
+
+while a[0] != 1
+start
+swap with last
+update the new heap size
+percolate down
+goto start
+
+
+
+merge sort O(nlogn)
+
+heap sort also nlogn - it is INPLACE
+merge sort is not, because you have to have external arrays
+
+
+before mid term
+-------------------
+B Tree - windows directory structure is this
+Quick Sort - another sorting
+
+Meet on Fri 19 5-9
+mid term on 26
+instead of 11 we meet on 12
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
