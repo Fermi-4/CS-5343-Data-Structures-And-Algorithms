@@ -1,0 +1,200 @@
+Graphs
+
+- Vertices 
+- Edges
+
+Directed edge - ordered pair of vertices(u,v) from u to v
+
+undirected edge - (u,v) == (v,u)
+unordered pair
+
+directed graph - all edges are directed
+
+undirected graph - all edges are undirected
+
+What about one with both
+
+undirected edges are really 2 directed edges in opposite direction
+
+simple path - all elements distinct
+TSP 
+
+cycle - original and last are the same
+
+simple cycle - all elements are distinct
+
+length = number of edges
+
+vertex are connected if there is a path that contains to both
+
+graph is connected if path from every vertex to the other
+
+acyclic graph - no cycles, trees
+
+trees are graphs
+
+all algs for trees are also for acyclic graph
+
+forest is disjoint set of trees
+
+digraph
+
+
+weakly connected
+strongly connected - a path to every vertex
+
+alg to tell if it is equivalent
+
+deg() = sum of all degrees
+
+max edges = n*n-1/2
+
+directed = n*n-1
+
+adjacency matrix
+A[][] = 1 - there is edge
+A[][] = 0 - no edge
+
+this symmetric in an undirected graph
+
+incident graph - edges
+col are edge
+row are vert
+
+1 going out
+-1 to show coming in
+0 no edge
+
+adjacency list
+linked list for every vertex, links show whic h verts are connected
+
+
+in degree, out degree, directed graph
+
+BFS, DFS
+
+no such thing as a root
+
+have to specify starting point
+
+DFS
+-pick an edge
+
+dfs(n)
+	visited[n] =1
+	for each vertex connected to n (list)
+		if visited[v]==0
+			dfs(v);
+
+
+BFS
+insert A into queue
+pop
+insert A children
+etc
+
+
+DFS,BFS big O = O(V+E)
+
+///////////////////////////
+shortest path
+
+A -> B -> C -> D
+B -> C is also shortest path
+
+SPT - shortest path tree
+
+
+Dijkstra's Algorithm - prof in UT Austin
+
+initiall all distances are inf
+
+queue of edges is e
+priority queue is log e
+
+remove vertex, v + e*log e
+
+if edge weights are negative, it will not work
+
+//////////////////
+Bellman Ford
+
+- list of all edges
+
+- all distance are  inf except start33311111
+
+max iterations n number of vertices
+
+- see video
+
+if more than n, stop because it is cycling
+
+////////////////////
+minimum spanning trees
+
+- connectivity
+- shortest path to connect vertices
+- SPT is visiting every node, MSP is connecting every node
+
+2 algorithms
+
+- cycle property
+- add edge e and makes a cycle
+- if edge e is smaller than any other edge then there is a better spanning tree
+
+partition property
+- pick the edge with the smallest weight
+
+Kruskals Alg - uses partition property
+- each vertex is a tree by itself
+- start combining one by one
+- add the 2 with smallest weight edge; repeat
+- edge cannot make a cycle
+
+
+// common mistake is to mistake this with d's
+Prims Algorithm - this uses the connected property
+
+
+- priority queue of vertices
+- we have a starting point
+- add smallest to tree
+
+complexity: (m log n)
+
+lots of vertices, kruiskals in better
+lots of edges, prims is better
+
+//////////////////////////////
+Digraphs
+
+Directed Graphs
+
+reachability
+how to determine if it is strongly connected
+
+- traverse from node
+- reverse edges, DFS same vertex, still connected if you can reach the same nodes again
+
+- transitive closure
+- path from one v to another, but no direct edge, then in new graph i make new edge
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

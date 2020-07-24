@@ -1,0 +1,90 @@
+
+// search
+main() {
+	Node n = BST(root, val)
+
+}
+
+
+
+BST(tmp, val) {
+	if(tmp == null) return null;
+	if(tmp.val == val) return tmp;
+	if(v > tmp.val) return BST(tmp.left, v);
+	else return BST(tmp.right, v);
+}
+
+// insert
+have it in the recording
+
+// delete 
+predecessor successor
+successor smallest on the rigfht hand
+pred largest value on the left
+
+delete node and replace with pred, or successor
+
+successor can at most have a right child - cannot have a right child
+
+constant time
+
+AVL Node {
+	int val
+	Node left;
+	Node right;
+	Node parent
+	int height;
+}
+
+
+pred cannot have right child
+
+take left child of pred and link with the right of the parent of the pred
+
+
+successor - cannot have left child
+parent of successor - take the right child of successor and link to the left of parent
+
+
+exercise: 
+
+pred = 30
+second hw - write del impl for binary search tree
+breadth first search
+worst case for BST is O(n)
+
+balanced BST: O(logN)
+
+- 1st alg: delete, insert
+- AVL tree: height tolerance of at most one-
+- balancing done by rotating
+check the parent - is there a problem? 1 2 3
+
+left of middle node goes to the right if left node
+
+
+zig zag - rotate 2-3, rotate normal
+straight line - rotate once
+
+Insert = O(logN)
+Delete = O(logN)
+
+height is always zero on insert because it is always a leaf node
+
+next hw will be other balancing
+
+look at nodes and then look at pointers
+///////////////////////// sorting ///////////////////////////
+selection sort - n^2
+bubble sort - n^2
+
+
+whats the big deal about bubble sort?
+worst case bubble sort is n^2 best is n
+selection sort is n^2 for best and worst
+
+June 27 Saturday - 2 hours exam
+Fri July 10 moved to Sunday July 12
+
+
+

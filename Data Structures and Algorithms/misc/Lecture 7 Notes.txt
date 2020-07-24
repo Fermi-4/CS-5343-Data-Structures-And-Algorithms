@@ -1,0 +1,250 @@
+Top sort
+radix sort
+unoin find
+///////////////
+
+----- Topological Sort ----- 
+
+Graph represents seq of activities
+
+"in order to do C I must do A and B"
+
+DAG - directed acyclic graph
+
+No cycles - with cycles there is no starting point
+
+Acyclic graph means at least one node with no incoming edges
+
+DFS Topological Sort
+
+- what to do when there is a cycle?
+- how to identify?
+
+check if label exist before calling DFSTopological(N n);
+
+DFS(N) {
+if(VISITED[N] && !LABEL[N]) {// cycle}
+VISITED[N] = 1;
+while(N->next != null) {
+	N n = N-> next;
+	if(!n.labeled) DEF(n)	
+}
+LABEL[N] = count;
+count--;
+}
+
+Topo sort ex: H F G E D A B C
+
+
+BSF Topological Ordering
+
+BFS handles OR condition
+
+predecessor count - in degree count, when 0 it means there is no dep
+
+- find with in degree 0, put in queue
+- dequeue A 
+- update pred count
+- any new count that becomes 0 add to queue
+- goto dequeue A
+
+
+
+PCOUNT: A B C D E F G H I J K L
+PCOUNT: 0 0 0 0 0 0 1 0 0 1 0 2
+QUEUE:  D K
+DEQUEUE:
+ORDER:  A H I C E B F
+
+queue is empty, nodes unlabeled - CYCLE
+
+
+----- Radix Sort ----- 
+
+Heap and Merge O(nlogn)
+Radix - trying to reach O(n)
+visit only once
+
+7 9 1 5 3 2 4 6 8 0
+
+ar[10]
+insert where position is value
+
+problem when words and large numbers
+
+LSD - least significant digit
+MSD - most significant digit
+
+312 256
+
+bucket of size 10
+
+0
+1
+2 256
+3 312 329 356 326
+4 469 459
+5
+6
+7
+8
+9 929
+
+bucket 2 only one number - pull out and sort it
+bucket 3 - create ten more buckets and sort next most significant
+
+312 329 356 326
+
+0
+1 312
+2 329 326
+3
+4
+5 356
+6
+7
+8
+9
+
+sort 312
+
+329 326
+
+0
+1 
+2 
+3
+4
+5 
+6 326
+7
+8
+9 329
+
+sort 326 and 329
+
+
+
+worst case, visit number of digits
+
+M digits
+N numbers
+
+O(MxN)
+
+if M << N --> O(N)
+
+
+radix = 10
+radix = 16 for hex
+radix = 26, 52 for strings
+
+
+LSD
+
+- sort into buckets by LSD
+- first in first out order
+- sort again using next LSD
+
+
+- space complexity is the radix, much less space
+- M passes
+- M x N << nlogn then it makes sense
+
+
+
+pay attention to first in first out on the exam!
+
+
+
+----- Hashing ----- 
+
+want simple function
+evenly distributed
+keys may not be numeric
+different keys map to same location --> collision
+worst case, many collisions approaches N complexity
+
+if the keys are strings -> ascii
+
+hashing function should always give a value much large to table size
+
+you do not resize the table ---> you mod the hash with the table size
+
+truncation
+split the
+
+folding divide into some parts and add up take mod
+- shift folding: split and add parts
+- boundary folding: reverse every other split then add it up
+Key mod N: mod
+square key then truncate
+
+mid square
+use middle as address
+
+hash function 1: add every ascii value and mod table size
+function 2: 17576 max
+2851 three char words
+27 and 37
+
+27 - alphabet + space
+37 - a-z 0-9
+53 - upper and lower
+
+hash is not an index to the table
+index = hash mod table size
+
+how to resolve collisions
+
+always use a prime number for size of hash table
+
+--- collision resolution
+separate chaining - make a linked list
+	- when keys is larger than table size it is fine
+	- deletion is easy
+	- collisions very likely
+	- load factor: ratio of number of elements / table size
+	- lf can be greater than 1 (bad)
+	- unsuccessful search worst case: traverse longest linked list
+
+open addressing
+	- select other location to insert when there is a collision
+		- linear probing: linearly go through the table to find the next location, for each collision that happens the problem of collision increases, load factor should be less than 0.5,
+ more than twice the estimate of the size
+		- deletion is hard; lazy deletion;
+		- when I delete, I leave it the way it is, with a flag that says it is removed
+		- must use lazy deletion
+	
+	- clustering problem
+		- keys start to cluster at certain locations, collisions increase
+	- quadratic probing; same as linear but sqaure on each index to get the next index; if size is prime and load factor is 0.5, then can always insert
+	
+	- next square; H(i) = H(i-1)+2i-1
+
+rehashing - if it reaches 0.5 or more, double but always to the next prime number
+
+double hashing: if collision with first function, use another;
+f(i)= i*hash2(i)
+typically add 1 so never get 0
+
+
+double hashing - use double hash result and multiply linearly until empty space found
+
+compilers
+search engine
+game programs
+spelling checkers
+
+		
+
+
+
+
+
+
+
+
+
+
+

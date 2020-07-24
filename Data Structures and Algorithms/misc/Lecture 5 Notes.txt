@@ -1,0 +1,97 @@
+B Trees
+- Windows dir are B trees
+
+AVL ensures that Binary Search Tree is balanced
+
+BST - tree can have at most 1 child
+
+Multiway - multiple children, same property of the binary search tree
+
+We want the search to be log(n) just like binary sort
+
+- sort it, do bin search, nlogn, not good
+
+logM(N)
+
+why not bin tree.. h = log2(N)
+log4(N) is shorter
+
+m number of values in each node: mlogM(N)
+
+B Tree - balanced multiway Tree
+B Tree cannot be of by 1 - must be perfectly balanced
+
+round it up: order: m, max: m-1, min: m/2-1
+max subtrees = m
+
+min num of children = 5/2 greater = x; min values = x-1
+
+insert first, then: 
+overflow: more values than allowed in a node
+
+- divide into 2 parts
+- middle goes up
+- divide node into 2 children
+- check the minimum number of values in leaf nodes
+
+max values = m-1
+min children = m/2
+min values = m/2-1
+
+m=4
+max=3
+min ch.=2
+min=1 
+
+///// delete //////
+underflow
+- look at the siblings of this node
+- see if you can borrow from the siblings
+- borrow means rotate, like before
+
+- next level of complexity, cannot borrow from siblings
+- then you merge left side or right side
+- merge means parent comes down
+
+cannot remove nodes only keys
+
+m = global
+BNODE {
+
+	BNODE parent;
+	BNODE ch[m+1];
+	int val[m];
+}
+
+////// QUICK SORT //////
+
+O(n^2) - worst case
+O(n logn) - in practice... fastest in practice
+
+no rule for first pivot
+two arrows..
+right I find the smaller number
+left I find the larger number
+
+swap the arrows
+go to right arrow and move it in 
+once arrows meet - split into 2
+compare to pivot
+
+after swap the pivot index changes
+
+
+base case for quick sort: Q(A, 1, 1) -- same num
+			  Q(A, 1, 2) -- 2 > 1
+
+left, pivlot-1
+pivot+1, right
+
+
+
+
+
+
+
+
+
