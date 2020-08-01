@@ -1,0 +1,189 @@
+
+
+representative points to itself
+
+find is O(1)
+
+union
+- have to change what representative is pointing to
+- union is O(1) 
+- find worst case: O(n) for n unions
+
+2nd option
+- can change so change every pointer, then find is O(1) and union is O(n)
+
+
+3rd option: weighted union
+- chain the smallest set to longer
+
+total number of pointers changed is O(n^2) without caring about the weight
+
+- total number of pointers changes is O(n logn)
+
+
+--------- sets as trees ----------
+
+- in trees, root is the set representative
+
+smart union startegies
+- height/rank
+- weight/numbers of nodes
+
+- find becomes logN rank
+
+
+1-union
+2-smart union
+   -by weight(# of nodes)
+   -by rank(height)
+3-find by path compression
+   - change the pointers to point to the head, only when you do find (lazy init)
+
+
+
+
+--------- sets as arrays----------
+
+- roots can be set to themselves
+a[0]=0
+a[1]=1
+a[2]=1
+
+- you must first do a find before a union
+
+- if they are same then you cannot do a union by definition because they are in the same set
+
+- continue until id and value are the same
+
+find(a) {
+if(id[a]==a) return a
+else find(id[a])
+}
+
+- smart union strategy with ary
+
+- negative is weight, positive is height
+
+find(a) {
+	if(id[a]<0) return a
+	else find(id[a])
+}
+- find with path compression
+
+find(v) {
+   if(id[v]<0) return v
+    else id[v] = find(id[v])
+}
+
+--------- Red Black Trees ----------
+
+- does not maintain the height
+- maintains balance by using color
+
+- every node is red or black
+- do focus on the null children
+	- have black color
+- the root is black
+- every leaf (and null) is black
+
+- if node is red then both children must be black
+
+- number of black nodes on all paths must be equal
+
+- imbalance is a red node
+
+- 1:2, cannot be more than twice
+- linux changed its alg to do processes using a red-black tree
+
+- why worry about the red-black tree?
+- more relaxed, fewer balances
+
+- insert
+- delete
+- balances
+
+
+- always insert as a red color
+- broken: is the parent red? No? then good
+- broken parent is red? Fix:
+- look at the color of the uncle
+	- uncle red or uncle black
+	- black: can afford an extra red 		 node.. rotate and push 		 the red color to the 		 other side
+
+	- red: parent red, uncle red, make parent and uncle black, grandparent red, if root then change it back to black
+
+- during zigzag the colors stay red 
+
+-delete
+
+
+powerpoint and pdf
+-insert follow powerpoint
+-delete follow pdf
+
+node we want to delete,
+
+follow the binary search rules
+- pred or succ
+- red node can be deleted no problem
+- if delete a black node, now short a black node
+- put square on it
+
+based on color of the nephew
+- look at sibling, if black then look at children, if red then rotate
+
+- sib black nephew red
+- sib black nephew black
+- sib red nephew black, nephew cannot be black or null
+
+- delete and add little reference black box
+- look at sibling, then nephew
+
+----------------------------------------
+
+
+
+final is comprehensive
+can review after Tuesday morning
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

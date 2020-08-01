@@ -1,0 +1,70 @@
+Colten Nabers
+
+1. Given a single linked list of positive integers, a pointer to the head of the list.
+Write a RECURSIVE program to find the largest number in the list. If the list is
+empty, it will return -1. ( 7 points)
+
+
+
+int largest(Node n) {
+	if(n == null) return -1;
+	if(n.next == null) return n.data;
+	else {
+		int nxt = largest(n.next);
+		if(nxt < n.data) return n.data
+		else return nxt;
+	}
+}
+
+
+
+2. Binary tree node is defined as follows:
+
+Node {
+Int Val;
+Node *rchild;
+Node *lchild;
+Node *parent;
+
+
+}
+
+
+Write a recursive function where given a node in the tree, return the right most
+leaf of the tree. (7 points);
+Node *findleaf(Node *curNode) {
+	if(curNode.right != null) return findleaf(curNode.right);
+	return curNode;
+}
+
+
+3. Write a recursive function to check if a tree is FULL or not. The argument to the function is the root of the tree.
+
+
+boolean isFull(Node n) {
+	if(n == null) return true; //empty case? not specified in question
+	if(n.left == null && n.right == null) return true; //leaf
+	if(n.left != null && n.right != null) return (isFull(n.left) && isFull(n.right));
+	return false;
+}
+
+5. Define the term in-degree of a graph. Show a graph of in degree 4. (2 points)
+in-degree: sum off all the in-degrees of each vertex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
